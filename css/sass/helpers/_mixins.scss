@@ -1,0 +1,26 @@
+@mixin prefix($property , $value , $prefixes:()){
+
+  @each $prefix in $prefixes {
+    #{'-'+$prefix+'-'+$property}:$value;
+  }
+  #{$property}:$value;
+}
+@mixin breakpoints($point){
+  @if $point == mobile{
+    @media (min-width:576px) and (max-width:767px) {
+      @content;
+    };
+  }@else if $point == small {
+    @media (min-width:768px) {
+      @content;
+    };
+  }@else if $point == medium {
+    @media (min-width:992px) {
+      @content;
+    };
+  }@else if $point == large{
+    @media (min-width:1200px) {
+      @content;
+    };
+  }
+};
